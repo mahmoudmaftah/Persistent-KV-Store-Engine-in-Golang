@@ -35,7 +35,7 @@ const magicNumber uint64 = 0x1234567890ABCDEF
 const directory string = "SSTFiles"
 const ext string = ".tmp"
 const defLoad uint64 = 1000
-const treshold uint64 = 5
+const treshold uint64 = 1000
 const sysVers uint64 = 110011
 const mergeThreshold uint64 = 10
 
@@ -345,9 +345,9 @@ func (kv *MyKvStore) SSTCompaction() error {
 		}
 
 		// If the number of SST files is odd, we need to rename the last SST file.
-		if kv.sstM.sstCount%2 == 1 {
-			fmt.Printf("Renaming SST%d to SST%d\n", kv.sstM.sstCount-1, kv.sstM.sstCount/2)
-			err := os.Rename(fmt.Sprintf("%s/SST%d.sst", directory, kv.sstM.sstCount-1), fmt.Sprintf("%s/SST%d.sst", directory, kv.sstM.sstCount/2))
+		if n%2 == 1 {
+			fmt.Printf("Renaming SST%d to SST%d\n", n-1, n/2)
+			err := os.Rename(fmt.Sprintf("%s/SST%d.sst", directory, n-1), fmt.Sprintf("%s/SST%d.sst", directory, n/2))
 			if err != nil {
 				return err
 			}
