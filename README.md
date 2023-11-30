@@ -33,8 +33,3 @@ The design philosophy of GoPersistKV revolves around simplicity. The key-value s
 GoPersistKV incorporates fault-tolerant mechanisms to handle unexpected errors or crashes gracefully. The engine employs techniques like data persistence and log-based recovery to ensure data integrity even in the face of unforeseen events.
 
 ## Getting Started
-
-### Installation
-
-```bash
-go get -u github.com/your-username/gopersistkv
